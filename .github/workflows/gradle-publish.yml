@@ -30,6 +30,9 @@ jobs:
           restore-keys: |
             gradle-${{ runner.os }}
 
+      - name: 🛠️ Даем права gradlew
+        run: chmod +x ./gradlew
+
       - name: 🔧 Сборка Gradle
         run: ./gradlew build
 
