@@ -1,6 +1,6 @@
 name: RandomTeleport
 main: com.slyph.randomteleport.RandomTeleportPlugin
-version: 1.0
+version: 1.2
 api-version: 1.16
 authors: [slyph]
 
@@ -10,17 +10,15 @@ libraries:
 
 commands:
   rtp:
-    description: Открывает меню рандомной телепортации
-    usage: /<command>
-  rtpreload:
-    description: Перезагружает конфиг RandomTeleport без рестарта сервера
-    usage: /<command>
-    permission: randomteleport.reload
+    description: Открывает меню рандомной телепортации или перезагружает плагин
+    usage: /rtp [reload]
+    aliases: []
+    permission: randomteleport.use
 
 permissions:
   randomteleport.use:
     description: Разрешает использование /rtp
     default: true
   randomteleport.reload:
-    description: Позволяет перезагрузить плагин
+    description: Перезагрузка плагина (/rtp reload)
     default: op

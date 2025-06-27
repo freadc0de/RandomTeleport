@@ -81,6 +81,10 @@ messages:
     - '&7'
     - "&c72b2b ❌  &ff9089|  &ff5a5aПодождите &ff6262&l%time% &ff5a5aсек."
     - '&7'
+  cancelled:
+    - '&7'
+    - "&c72b2b ❌  &ff9089|  &ff5a5aВы двигаетесь. Телепортация отменена!"
+    - '&7'
 
 title-animation:
   interval-ticks: 10
@@ -101,6 +105,14 @@ title-animation:
     - "&7Ожидайте.."
     - "&7Ожидайте."
 
+titles:
+  cancel:
+    title: "&ff5743&lТелепорт отменен"
+    subtitle: "&7Вы пошевелились"
+
+  success:
+    title: "&a5ff51&lТелепортация успешна"
+    subtitle: "&7Приятной игры!"
 
 #
 #         *        .        ✦          .             .         *
