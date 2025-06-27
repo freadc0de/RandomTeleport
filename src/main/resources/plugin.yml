@@ -1,0 +1,26 @@
+name: RandomTeleport
+main: com.slyph.randomteleport.RandomTeleportPlugin
+version: 1.0
+api-version: 1.16
+authors: [slyph]
+
+libraries:
+  - "net.kyori:adventure-api:4.17.0"
+  - "net.kyori:adventure-platform-bukkit:4.3.0"
+
+commands:
+  rtp:
+    description: Открывает меню рандомной телепортации
+    usage: /<command>
+  rtpreload:
+    description: Перезагружает конфиг RandomTeleport без рестарта сервера
+    usage: /<command>
+    permission: randomteleport.reload
+
+permissions:
+  randomteleport.use:
+    description: Разрешает использование /rtp
+    default: true
+  randomteleport.reload:
+    description: Позволяет перезагрузить плагин
+    default: op
