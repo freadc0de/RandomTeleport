@@ -33,7 +33,7 @@ jobs:
       - name: 🔧 Сборка Gradle
         run: ./gradlew build
 
-      - name: 📤 Артефакты: JAR плагина
+      - name: 📤 Artefacts
         uses: actions/upload-artifact@v4
         with:
           name: Plugin-JAR
