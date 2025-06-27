@@ -1,4 +1,3 @@
-# RandomTeleport – конфигурация GUI и логики
 settings:
   world: "world"
   attempts: 50
@@ -7,17 +6,17 @@ settings:
   max-range: 10000
 
 sounds:
-  success:                       # уже было
+  success:
     sound: "ENTITY_PLAYER_LEVELUP"
     volume: 1.0
     pitch: 1.0
 
-  animation-tick:                # НОВОЕ — играет на каждый кадр анимации
-    sound: "BLOCK_LEVER_CLICK"   # любой enum из org.bukkit.Sound
+  animation-tick:
+    sound: "BLOCK_LEVER_CLICK"
     volume: 0.8
     pitch: 1.2
 
-  error:                         # НОВОЕ — при сообщении об ошибке
+  error:
     sound: "BLOCK_NOTE_BLOCK_BASS"
     volume: 1.0
     pitch: 0.8
@@ -26,53 +25,82 @@ gui:
   size: 45
   title: "&a&lМеню &fRTP"
 
-  background-item:
+  background-item:                      # общий фон
     material: GRAY_STAINED_GLASS_PANE
     name: " "
 
   buttons:
     normal:
-      slot: 20
+      slot: 20                          # центр синего острова
       material: ENDER_PEARL
-      name: "&bОбычный телепорт"
+      name: "&7"
       lore:
-        - "&7Телепортирует вас"
-        - "&7в случайную позицию"
+        - " &b3dfd0♪ Обычный телепорт"
+        - "&7"
+        - " &77ffef⚑ Дальность: &a8fff5&l1000 блоков &a8fff5от спавна "
+        - " &77c3ff♯ Опасность: &a8dbff&lНизкая "
+        - " &778cff☑ Доступность: &a8abff&lВсем "
+        - "&7"
+        - " &a1ead1• Телепортирует вас в рандомную точку мира "
+        - "&7"
       highlight:
         material: LIGHT_BLUE_STAINED_GLASS_PANE
-        slots: [10,11,12,19,20,21,28,29,30]
+        slots: [10,11,12,19,20,21,28,29,30]   # 3 × 3 квадрат
 
     nearest:
-      slot: 24
-      material: COMPASS
-      name: "&dБлижайший телепорт"
+      slot: 24                          # центр красного острова
+      material: RECOVERY_COMPASS
+      name: "&7"
       lore:
-        - "&7Телепортирует на"
-        - "&7минимум 250 блоков"
+        - " &dfb3b3♫ Ближайший телепорт"
+        - "&7"
+        - " &ff8a77⚑ Дальность: &ffb3a8&l250 блоков &ffb3a8до ближайшего игрока "
+        - " &ffa677♯ Опасность: &ffc8a8&lСредняя "
+        - " &ffe277☑ Доступность: &ffefa8&lВсем "
+        - "&7"
+        - " &eab3a1• Телепортирует вас к ближайшему игроку "
+        - ""
       highlight:
         material: RED_STAINED_GLASS_PANE
         slots: [14,15,16,23,24,25,32,33,34]
 
 messages:
   no_players_online:
-    - "&FF5555&lНет достаточного количества игроков!"
+    - '&7'
+    - "&c72b2b ❌  &ff9089|  &ff5a5aНет достаточного кол-ва игроков"
+    - '&7'
   teleporting:
-    - "&55FF55Телепортация..."
+    - '&7'
+    - "&24e765 ✔  &89ffa6|  &24e765Телепортация..."
+    - '&7'
   teleported:
-    - "&55FF55Вы перемещены!"
+    - '&7'
+    - "&24e765 ✔  &89ffa6|  &24e765Вы успешно перемещены!"
+    - '&7'
   cooldown:
-    - "&FF5555Подождите &e%time% &cсек."
+    - '&7'
+    - "&c72b2b ❌  &ff9089|  &ff5a5aПодождите &ff6262&l%time% &ff5a5aсек."
+    - '&7'
 
 title-animation:
-  interval-ticks: 15
+  interval-ticks: 10
   titles:
-    - "&aТелепортация"
-    - "&bТелепортация"
-    - "&cТелепортация"
+    - "&ffb362&m &m"
+    - "&ffb362&m  &m"
+    - "&ffb362&m   &m"
+    - "&ffb362&m    &m"
+    - "&ffb362&m   &m"
+    - "&ffb362&m  &m"
+    - "&ffb362&m &m"
   subtitles:
     - "&7Ожидайте..."
     - "&7Ожидайте.."
     - "&7Ожидайте."
+    - "&7Ожидайте.."
+    - "&7Ожидайте..."
+    - "&7Ожидайте.."
+    - "&7Ожидайте."
+
 
 #
 #         *        .        ✦          .             .         *
