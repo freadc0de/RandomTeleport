@@ -25,13 +25,13 @@ gui:
   size: 45
   title: "&535b68               &333840» &535b68RTP &333840«"
 
-  background-item:                      # общий фон
+  background-item:
     material: GRAY_STAINED_GLASS_PANE
     name: " "
 
   buttons:
     normal:
-      slot: 20                          # центр синего острова
+      slot: 20
       material: ENDER_PEARL
       name: "&7"
       lore:
@@ -45,10 +45,10 @@ gui:
         - "&7"
       highlight:
         material: LIGHT_BLUE_STAINED_GLASS_PANE
-        slots: [10,11,12,19,20,21,28,29,30]   # 3 × 3 квадрат
+        slots: [10,11,12,19,20,21,28,29,30]
 
     nearest:
-      slot: 24                          # центр красного острова
+      slot: 24
       material: RECOVERY_COMPASS
       name: "&7"
       lore:
