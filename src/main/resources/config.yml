@@ -2,7 +2,7 @@ settings:
   world: "world"
   attempts: 50
   safe-radius: 16
-  cooldown-seconds: 3600
+  cooldown-seconds: 60
   max-range: 10000
 
 sounds:
@@ -23,7 +23,7 @@ sounds:
 
 gui:
   size: 45
-  title: "&a&lМеню &fRTP"
+  title: "&535b68               &333840» &535b68RTP &333840«"
 
   background-item:                      # общий фон
     material: GRAY_STAINED_GLASS_PANE
@@ -71,7 +71,7 @@ messages:
     - '&7'
   teleporting:
     - '&7'
-    - "&24e765 ✔  &89ffa6|  &24e765Телепортация..."
+    - "&e7a924 ⏳  &ffe189|  &e7a924Телепортация..."
     - '&7'
   teleported:
     - '&7'
