@@ -4,6 +4,7 @@ import com.slyph.randomteleport.animation.TitleAnimation;
 import com.slyph.randomteleport.command.RandomTeleportCommand;
 import com.slyph.randomteleport.cooldown.CooldownManager;
 import com.slyph.randomteleport.gui.TeleportMenuListener;
+import com.slyph.randomteleport.listener.MoveCancelListener;
 import com.slyph.randomteleport.teleport.TeleportService;
 import com.slyph.randomteleport.update.UpdateChecker;
 import com.slyph.randomteleport.util.ColorUtil;
@@ -44,6 +45,7 @@ public final class RandomTeleportPlugin extends JavaPlugin {
         getCommand("rtp").setExecutor(new RandomTeleportCommand());
 
         getServer().getPluginManager().registerEvents(new TeleportMenuListener(), this);
+        getServer().getPluginManager().registerEvents(new MoveCancelListener(this), this);
 
         updateChecker.checkAsync();
         printBanner();

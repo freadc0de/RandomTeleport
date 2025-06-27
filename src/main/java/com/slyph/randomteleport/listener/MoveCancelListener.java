@@ -15,9 +15,12 @@ public class MoveCancelListener implements Listener {
 
     @EventHandler
     public void onMove(PlayerMoveEvent e) {
-        if (e.getFrom().distanceSquared(e.getTo()) < 0.01) return;      // фактическое движение?
-        var service = plugin.teleportService();
-        if (!service.isWaiting(e.getPlayer())) return;                  // не в ожидании
-        service.cancelWaiting(e.getPlayer());                           // отмена
+        if (!plugin.teleportService().isWaiting(e.getPlayer())) return;
+
+        var f = e.getFrom();
+        var t = e.getTo();
+        if (f.getX() != t.getX() || f.getY() != t.getY() || f.getZ() != t.getZ()) {
+            plugin.teleportService().cancelWaiting(e.getPlayer());
+        }
     }
 }

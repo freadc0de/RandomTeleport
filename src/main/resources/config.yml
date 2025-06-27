@@ -4,6 +4,7 @@ settings:
   safe-radius: 16
   cooldown-seconds: 60
   max-range: 10000
+  warmup-ticks: 40
 
 sounds:
   success:
