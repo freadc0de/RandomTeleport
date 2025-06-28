@@ -20,55 +20,61 @@ public class TeleportMenu {
 
     public TeleportMenu(Player player) {
         this.player = player;
-        var cfg = RandomTeleportPlugin.getInstance().getConfig();
 
-        int size   = cfg.getInt("gui.size", 45);
-        String raw = cfg.getString("gui.title", "&a&lRTP");
-        inv = Bukkit.createInventory(null, size, ColorUtil.color(raw));
+        var cfg   = RandomTeleportPlugin.getInstance().getConfig();
+        int size  = cfg.getInt("gui.size", 45);
+        String ttl = ColorUtil.color(cfg.getString("gui.title", "&a&lRTP"));
 
-        ConfigurationSection bg = cfg.getConfigurationSection("gui.background-item");
-        ItemStack bgStack = plainItem(bg);
+        inv = Bukkit.createInventory(null, size, ttl);
 
-        for (int i = 0; i < size; i++) inv.setItem(i, bgStack);
+        drawChessBackground(cfg.getConfigurationSection("gui.background"));
 
         placeButton("normal");
+        placeButton("pattern");
         placeButton("nearest");
     }
 
-    private ItemStack plainItem(ConfigurationSection sec) {
-        ItemStack item = new ItemStack(Material.valueOf(sec.getString("material", "GRAY_STAINED_GLASS_PANE")));
-        ItemMeta meta = item.getItemMeta();
-        meta.setDisplayName(ColorUtil.color(sec.getString("name", " ")));
-        item.setItemMeta(meta);
-        return item;
+    private void drawChessBackground(ConfigurationSection sec) {
+        ItemStack even = pane(sec.getString("primary",   "GRAY_STAINED_GLASS_PANE"));
+        ItemStack odd  = pane(sec.getString("secondary", "BLACK_STAINED_GLASS_PANE"));
+
+        for (int slot = 0; slot < inv.getSize(); slot++) {
+            int row = slot / 9, col = slot % 9;
+            inv.setItem(slot, ((row + col) & 1) == 0 ? even : odd);
+        }
     }
 
     private void placeButton(String id) {
-        ConfigurationSection root = RandomTeleportPlugin.getInstance()
+        ConfigurationSection btn = RandomTeleportPlugin.getInstance()
                 .getConfig().getConfigurationSection("gui.buttons." + id);
 
-        ConfigurationSection hl = root.getConfigurationSection("highlight");
-        ItemStack highlight = new ItemStack(Material.valueOf(hl.getString("material", "LIGHT_BLUE_STAINED_GLASS_PANE")));
-        ItemMeta hlMeta = highlight.getItemMeta();
-        hlMeta.setDisplayName(" ");
-        highlight.setItemMeta(hlMeta);
-
-        for (int slot : hl.getIntegerList("slots")) {
-            if (slot >= 0 && slot < inv.getSize()) inv.setItem(slot, highlight);
+        if (btn.contains("highlight")) {
+            var hl = btn.getConfigurationSection("highlight");
+            ItemStack glass = pane(hl.getString("material", "LIGHT_BLUE_STAINED_GLASS_PANE"));
+            hl.getIntegerList("slots").forEach(s -> inv.setItem(s, glass));
         }
 
-        int slot = root.getInt("slot");
-        ItemStack item = new ItemStack(Material.valueOf(root.getString("material", "ENDER_PEARL")));
+        ItemStack item = new ItemStack(Material.valueOf(btn.getString("material", "PAPER")));
         ItemMeta meta = item.getItemMeta();
-        meta.setDisplayName(ColorUtil.color(root.getString("name")));
-        List<String> lore = root.getStringList("lore").stream()
+        meta.setDisplayName(ColorUtil.color(btn.getString("name", "")));
+
+        List<String> lore = btn.getStringList("lore").stream()
                 .map(ColorUtil::color).collect(Collectors.toList());
         meta.setLore(lore);
-        item.setItemMeta(meta);
 
-        inv.setItem(slot, item);
+        if (id.equals("pattern")) {
+            meta.setLocalizedName("");
+        }
+
+        item.setItemMeta(meta);
+        inv.setItem(btn.getInt("slot", 0), item);
+    }
+
+    private ItemStack pane(String material) {
+        ItemStack it = new ItemStack(Material.valueOf(material));
+        ItemMeta im = it.getItemMeta(); im.setDisplayName(" "); it.setItemMeta(im);
+        return it;
     }
 
     public void open() { player.openInventory(inv); }
-    public Inventory inventory() { return inv; }
 }

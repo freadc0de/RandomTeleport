@@ -2,9 +2,8 @@ settings:
   world: "world"
   attempts: 50
   safe-radius: 16
-  cooldown-seconds: 60
+  cooldown-seconds: 5
   max-range: 10000
-  warmup-ticks: 40
 
 sounds:
   success:
@@ -26,13 +25,13 @@ gui:
   size: 45
   title: "&535b68               &333840» &535b68RTP &333840«"
 
-  background-item:
-    material: GRAY_STAINED_GLASS_PANE
-    name: " "
+  background:
+    primary:   GRAY_STAINED_GLASS_PANE
+    secondary: BLACK_STAINED_GLASS_PANE
 
   buttons:
     normal:
-      slot: 20
+      slot: 20                          # центр синего острова
       material: ENDER_PEARL
       name: "&7"
       lore:
@@ -48,6 +47,17 @@ gui:
         material: LIGHT_BLUE_STAINED_GLASS_PANE
         slots: [10,11,12,19,20,21,28,29,30]
 
+    pattern:
+      slot: 31
+      material: PAPER
+      name: "&7"
+      lore:
+        - " &89c9ff&lРандомная телепортация (RTP) "
+        - "&7"
+        - " &a6c3db⭐ Полезно тем, кто постоянно ищет "
+        - " &a6c3dbновые локации для добычи ресурсов "
+        - ""
+
     nearest:
       slot: 24
       material: RECOVERY_COMPASS
@@ -62,7 +72,7 @@ gui:
         - " &eab3a1• Телепортирует вас к ближайшему игроку "
         - ""
       highlight:
-        material: RED_STAINED_GLASS_PANE
+        material: BLUE_STAINED_GLASS_PANE
         slots: [14,15,16,23,24,25,32,33,34]
 
 messages:
