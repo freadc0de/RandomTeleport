@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
 
 public class UpdateChecker {
 
-    private static final String OWNER = "freadc0de";
+    private static final String OWNER = "slyphmp4";
     private static final String REPO  = "RandomTeleport";
     private static final Pattern TAG_PATTERN =
             Pattern.compile("\"tag_name\"\\s*:\\s*\"([^\"]+)\"");
